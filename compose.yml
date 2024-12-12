@@ -1,0 +1,73 @@
+services:
+  postgres:
+    image: postgres:17
+    restart: always
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: "postgres_blog"
+      POSTGRES_PASSWORD: "secret"
+      POSTGRES_DB: "postgres_blog"
+    networks:
+      - migrator
+
+  adminer:
+    image: adminer
+    restart: always
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+      ADMINER_DESIGN: flat
+    ports:
+      - 8002:8080
+    networks:
+      - migrator
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+      # - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+      # - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    # command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_DATABASE: "mysql_blog"
+      MYSQL_USER: "mysql_blog"
+      MYSQL_PASSWORD: "secret"
+    restart: always
+    networks:
+      - migrator
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      UPLOAD_LIMIT: 900000000
+    depends_on:
+      - mysql
+    ports:
+        - 8001:80
+    networks:
+      - migrator
+
+  pgloader:
+    # image: dimitri/pgloader:latest
+    build:
+      context: ./
+      dockerfile: ./docker/pgloader/Dockerfile
+
+    container_name: pgloader
+    # command: tail -F anything
+    volumes:
+      - ./script.conf:/home/script.conf
+      - ./info.log:/home/info.log
+    networks:
+      - migrator
+
+networks:
+  migrator:

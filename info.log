@@ -1,0 +1,62 @@
+2024-12-12T08:20:20.024002Z LOG pgloader version "3.6.7~devel"
+2024-12-12T08:20:20.028002Z LOG Data errors in '/tmp/pgloader/'
+2024-12-12T08:20:20.028002Z LOG Parsing commands from file #P"/home/script.conf"
+2024-12-12T08:20:20.168015Z LOG Migrating from #<MYSQL-CONNECTION mysql://mysql_blog@mysql:3306/mysql_blog {1007DEAA13}>
+2024-12-12T08:20:20.168015Z LOG Migrating into #<PGSQL-CONNECTION pgsql://postgres_blog@postgres:5432/postgres_blog {1007DEB743}>
+2024-12-12T08:20:29.816877Z LOG report summary reset
+                              table name     errors       rows      bytes      total time
+----------------------------------------  ---------  ---------  ---------  --------------
+                         fetch meta data          0        135                     0.180s
+                          Create Schemas          0          0                     0.000s
+                        Create SQL Types          0          0                     0.024s
+                           Create tables          0         74                     0.136s
+                          Set Table OIDs          0         37                     0.012s
+----------------------------------------  ---------  ---------  ---------  --------------
+                  mysql_blog.wp_usermeta          0      41461    12.3 MB          2.776s
+                  mysql_blog.wp_postmeta          0      12146    11.3 MB          2.440s
+        mysql_blog.wp_term_relationships          0       3071    30.8 kB          1.636s
+                   mysql_blog.wp_options          0        700     5.0 MB          2.712s
+             mysql_blog.wp_term_taxonomy          0        625    24.8 kB          2.356s
+      mysql_blog.wp_mr_rating_item_entry          0         97     2.9 kB          2.448s
+                   mysql_blog.wp_ratings          0         28     4.3 kB          2.684s
+                     mysql_blog.wp_posts          0       5369    57.1 MB          7.177s
+      mysql_blog.wp_actionscheduler_logs          0         16     1.1 kB          2.800s
+                  mysql_blog.wp_termmeta          0          9     0.3 kB          2.864s
+                  mysql_blog.wp_snippets          0          7     4.3 kB          3.012s
+  mysql_blog.wp_anycomment_subscriptions          0          4     0.8 kB          3.124s
+          mysql_blog.wp_wp_sap_questions          0          1     0.1 kB          3.236s
+          mysql_blog.wp_anycomment_likes          0          0                     3.316s
+ mysql_blog.wp_anycomment_uploaded_files          0          0                     3.368s
+                     mysql_blog.wp_links          0          0                     3.516s
+         mysql_blog.wp_mr_rating_subject          0          0                     3.560s
+         mysql_blog.wp_post_smtp_logmeta          0          0                     3.612s
+                     mysql_blog.wp_queue          0          0                     3.644s
+                 mysql_blog.wp_wow_coder          0          1     0.2 kB          3.688s
+                     mysql_blog.wp_users          0       2679   485.6 kB          0.204s
+                     mysql_blog.wp_terms          0        625    19.8 kB          0.016s
+    mysql_blog.wp_anycomment_email_queue          0        116     1.3 MB          0.936s
+mysql_blog.wp_mr_rating_item_entry_value          0         97     1.1 kB          0.188s
+               mysql_blog.wp_commentmeta          0         21     1.1 kB          0.312s
+                  mysql_blog.wp_comments          0         11     5.2 kB          0.356s
+   mysql_blog.wp_actionscheduler_actions          0          8     2.2 kB          0.572s
+            mysql_blog.wp_wp_sap_answers          0          5     0.1 kB          0.608s
+    mysql_blog.wp_actionscheduler_groups          0          2     0.0 kB          0.636s
+    mysql_blog.wp_actionscheduler_claims          0          0                     0.760s
+         mysql_blog.wp_anycomment_rating          0          0                     0.932s
+                  mysql_blog.wp_e_events          0          0                     0.904s
+            mysql_blog.wp_mr_rating_item          0          1     0.0 kB          0.928s
+               mysql_blog.wp_ms_snippets          0          0                     1.096s
+            mysql_blog.wp_post_smtp_logs          0          0                     1.124s
+                   mysql_blog.wp_signups          0          0                     0.932s
+            mysql_blog.wp_wp_sap_surveys          0          1     0.6 kB          1.168s
+----------------------------------------  ---------  ---------  ---------  --------------
+                 COPY Threads Completion          0          4                     8.701s
+                          Create Indexes          0         98                     1.496s
+                  Index Build Completion          0         98                     0.124s
+                         Reset Sequences          0         34                     0.096s
+                            Primary Keys          0         33                     0.024s
+                     Create Foreign Keys          0          0                     0.000s
+                         Create Triggers          0          0                     0.000s
+                        Install Comments          0          0                     0.000s
+----------------------------------------  ---------  ---------  ---------  --------------
+                       Total import time          ✓      67101    87.6 MB         10.441s
